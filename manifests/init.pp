@@ -60,10 +60,10 @@ class mesosdns (
   $file_config = "${config_path}/config.json"
 
   class {'mesosdns::install':
-    ensure          => $ensure,
-    version         => $version,
-    source          => $source,
-    path            => $install_path,
+    ensure  => $ensure,
+    version => $version,
+    source  => $source,
+    path    => $install_path,
   }
 
   class {'mesosdns::config':

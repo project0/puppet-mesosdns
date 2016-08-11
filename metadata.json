@@ -1,25 +1,26 @@
 {
-  "name": "intelliad-mesosdns",
-  "version": "0.1.0",
-  "author": "Richard Hillmann <rhillmann@intelliad.de>",
-  "summary": "Puppet module for mesos-dns - An DNS-based service discovery for Mesos.",
-  "license": "Apache-2.0",
-  "source": "https://github.com/intelliad-media/puppet-mesosdns",
-  "project_page": "http://mesosphere.github.io/",
-  "tags": ["mesos", "mesos-dns", "dns"],
-  "issues_url": "https://github.com/intelliad-media/puppet-mesosdns/issues",
-  "requirements": [
-    { "name": "pe","version_requirement": "3.x" },
-    { "name": "puppet","version_requirement": "3.x" }
-  ],
-  "operatingsystem_support": [
-    {
-      "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": ["14.04", "16.04"]
-    }
-  ],
-  "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 4.10.0 < 5.0.0"},
-    {"name":"puppet/archive","version_requirement":">= 0.4.0"}
-  ]
+    "name": "intelliad-mesosdns",
+    "version": "0.1.0",
+    "author": "Richard Hillmann <rhillmann@intelliad.de>",
+    "summary": "Puppet module for mesos-dns - An DNS-based service discovery for Mesos.",
+    "license": "Apache-2.0",
+    "source": "https://github.com/intelliad-media/puppet-mesosdns",
+    "project_page": "http://mesosphere.github.io/",
+    "tags": ["mesos", "mesos-dns", "dns"],
+    "issues_url": "https://github.com/intelliad-media/puppet-mesosdns/issues",
+    "requirements": [{
+        "name": "puppet",
+        "version_requirement": ">=3.4.0 <5.0.0"
+    }],
+    "operatingsystem_support": [{
+        "operatingsystem": "Ubuntu",
+        "operatingsystemrelease": ["14.04", "16.04"]
+    }],
+    "dependencies": [{
+        "name": "puppetlabs/stdlib",
+        "version_requirement": ">= 4.10.0 < 5.0.0"
+    }, {
+        "name": "puppet/archive",
+        "version_requirement": ">= 0.4.0 < 1.0.0"
+    }]
 }
