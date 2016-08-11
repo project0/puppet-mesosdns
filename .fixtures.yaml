@@ -1,0 +1,6 @@
+fixtures:
+  symlinks:
+    mesosdns: "#{source_dir}"
+  repositories:
+    'stdlib':  'git://github.com/puppetlabs/puppetlabs-stdlib'
+    'archive':  'git://github.com/voxpupuli/puppet-archive.git'
