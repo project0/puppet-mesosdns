@@ -1,4 +1,8 @@
 # Mesos-DNS Puppet Module
+[![Puppet Forge](http://img.shields.io/puppetforge/v/intelliad/mesosdns.svg)](https://forge.puppetlabs.com/intelliad/mesosdns)
+[![Puppet Forge score](https://img.shields.io/puppetforge/f/intelliad/mesosdns.svg)](https://forge.puppetlabs.com/intelliad/mesosdns)
+[![Build Status](https://travis-ci.org/intelliad-media/puppet-mesosdns.svg?branch=master)](https://travis-ci.org/intelliad-media/puppet-mesosdns)
+
 
 Manage [Mesos-DNS](http://mesosphere.github.io/) - An DNS-based service discovery for Mesos.
 
