@@ -7,7 +7,6 @@ PuppetLint.configuration.log_format = '%{path}:%{linenumber}  :%{check}:%{KIND}:
 PuppetLint.configuration.send('disable_class_inherits_from_params_class')
 PuppetLint.configuration.send('no-140chars-check')
 PuppetLint.configuration.ignore_paths = ['spec/**/*.pp', 'pkg/**/*.pp']
-PuppetLint.configuration.
 PuppetLint.configuration.fail_on_warnings = true
 
 desc 'Run acceptance tests'
