@@ -19,8 +19,8 @@ class mesosdns::config (
   $ensure = present,
   $config,
   $path,
-  $mesos_zk,
-  $mesos_master,
+  $mesos_zk = undef,
+  $mesos_master = undef,
   $zk_detection_timeout,
   $refresh_seconds,
   $state_timeout_seconds,
@@ -47,7 +47,7 @@ class mesosdns::config (
 
   # validate all params
   if $mesos_zk == undef and $mesos_master == undef {
-    fail('Please specifiy mesos_zk and or mesos_master')
+      fail('Please specifiy mesos_zk and or mesos_master')
   }
   if $mesos_master != undef {
     validate_array($mesos_master)
