@@ -16,7 +16,7 @@
 # Manage mesosdns installation of the binary
 #
 class mesosdns::install (
-  $ensure = present,
+  $ensure,
   $version,
   $source,
   $path,

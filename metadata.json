@@ -1,6 +1,6 @@
 {
     "name": "intelliad-mesosdns",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "author": "Richard Hillmann <rhillmann@intelliad.de>",
     "summary": "Puppet module for mesos-dns - An DNS-based service discovery for Mesos.",
     "license": "Apache-2.0",
