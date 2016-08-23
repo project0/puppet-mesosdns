@@ -16,11 +16,9 @@
 # Manage mesosdns config
 #
 class mesosdns::config (
-  $ensure = present,
+  $ensure,
   $config,
   $path,
-  $mesos_zk = undef,
-  $mesos_master = undef,
   $zk_detection_timeout,
   $refresh_seconds,
   $state_timeout_seconds,
@@ -43,41 +41,43 @@ class mesosdns::config (
   $recurse_on,
   $enforce_rfc952,
   $ip_sources,
+  $mesos_zk = undef,
+  $mesos_master = undef,
 ) {
 
-  # validate all params
-  if $mesos_zk == undef and $mesos_master == undef {
-      fail('Please specifiy mesos_zk and or mesos_master')
-  }
-  if $mesos_master != undef {
-    validate_array($mesos_master)
-  }
-  if $mesos_zk != undef {
-    validate_string($mesos_zk)
-  }
-
-  # required, just validate the first entry
-  validate_ip_address($resolvers[0])
-  validate_ip_address($listener)
-  validate_array($resolvers, $ip_sources)
-  validate_bool($dns_on, $http_on, $external_on, $recurse_on, $enforce_rfc952)
-  validate_re($soa_mname, '[\w\.]+')
-  validate_re($soa_rname, '[\w\.]+')
-  validate_integer([
-    $zk_detection_timeout,
-    $refresh_seconds,
-    $state_timeout_seconds,
-    $ttl,
-    $port,
-    $timeout,
-    $http_port,
-    $soa_refresh,
-    $soa_retry,
-    $soa_expire,
-    $soa_minttl,
-  ])
-
   if $ensure == 'present' {
+    # validate all params
+    if $mesos_zk == undef and $mesos_master == undef {
+        fail('Please specifiy mesos_zk and or mesos_master')
+    }
+    if $mesos_master != undef {
+      validate_array($mesos_master)
+    }
+    if $mesos_zk != undef {
+      validate_string($mesos_zk)
+    }
+
+    # required, just validate the first entry
+    validate_ip_address($resolvers[0])
+    validate_ip_address($listener)
+    validate_array($resolvers, $ip_sources)
+    validate_bool($dns_on, $http_on, $external_on, $recurse_on, $enforce_rfc952)
+    validate_re($soa_mname, '[\w\.]+')
+    validate_re($soa_rname, '[\w\.]+')
+    validate_integer([
+      $zk_detection_timeout,
+      $refresh_seconds,
+      $state_timeout_seconds,
+      $ttl,
+      $port,
+      $timeout,
+      $http_port,
+      $soa_refresh,
+      $soa_retry,
+      $soa_expire,
+      $soa_minttl,
+    ])
+
     file { $path:
       ensure => directory,
       owner  => 'root',

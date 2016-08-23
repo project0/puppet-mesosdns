@@ -16,3 +16,21 @@ describe 'mesosdns' do
     it { should contain_class('mesosdns') }
   end
 end
+
+describe 'mesosdns' do
+  let :facts do
+    {
+      service_provider: 'systemd',
+      path: '/bin:/usr/bin',
+    }
+  end
+  let :params do
+    {
+      ensure: 'absent'
+    }
+  end
+  context 'with ensure is absent' do
+    it { should compile }
+    it { should contain_class('mesosdns') }
+  end
+end

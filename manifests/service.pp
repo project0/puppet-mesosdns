@@ -19,14 +19,14 @@ class mesosdns::service (
   $binary,
   $config,
   $ensure       = present,
-  $status       = 'enabled',
+  $status       = enabled,
   $restart      = true,
   $provider     = $::service_provider,
 ) {
   include mesosdns
 
   if $ensure == 'present' {
-
+    $service_restart = $restart
     case $status {
       # make sure service is currently running, start it on boot
       'enabled': {
@@ -55,6 +55,7 @@ class mesosdns::service (
     }
   } else {
     # make sure the service is stopped and disabled
+    $service_restart = false
     $service_ensure = 'stopped'
     $service_enable = false
   }
@@ -68,12 +69,15 @@ class mesosdns::service (
     }
     'systemd': {
       $service_file = "${provider_dir}/${service_name}.service"
-
+      $systemd_exec_subsribe = $ensure ? {
+                                  present => File[$service_file],
+                                  absent  => undef,
+                                }
       exec {"mesosdns systemd systemctl-daemon-reload ${title}":
           command     => 'systemctl daemon-reload',
           refreshonly => true,
           path        => $::path,
-          subscribe   => File[$service_file],
+          subscribe   => $systemd_exec_subsribe,
           before      => Service[$service_name],
       }
     }
@@ -82,7 +86,7 @@ class mesosdns::service (
     }
   }
 
-  $notify_service = $restart ? {
+  $notify_service = $service_restart ? {
     true    => Service[$service_name],
     default => undef,
   }
@@ -96,11 +100,18 @@ class mesosdns::service (
     notify  => $notify_service,
   }
 
+  # stop service before removing
+  $service_before = $ensure ? {
+    present => undef,
+    absent => File[$service_file],
+  }
+
   service { $service_name:
     ensure     => $service_ensure,
     enable     => $service_enable,
     hasrestart => true,
     hasstatus  => true,
     provider   => $provider,
+    before     => $service_before
   }
 }
