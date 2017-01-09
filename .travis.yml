@@ -10,16 +10,13 @@ cache: bundler
 script: bundle exec rake test
 env:
   - PUPPET_GEM_VERSION="~> 3.4.0"
-  - PUPPET_GEM_VERSION="~> 3.5.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 3.6.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 3.7.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 3.8.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 3.7.0" STRICT_VARIABLES=yes FUTURE_PARSER=yes
   - PUPPET_GEM_VERSION="~> 3.8.0" STRICT_VARIABLES=yes FUTURE_PARSER=yes
   - PUPPET_GEM_VERSION="~> 4.0.0" STRICT_VARIABLES=yes
-  - PUPPET_GEM_VERSION="~> 4.1.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 4.2.0" STRICT_VARIABLES=yes
-  - PUPPET_GEM_VERSION="~> 4.3.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 4.4.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 4.6.0" STRICT_VARIABLES=yes
 matrix:
@@ -29,15 +26,9 @@ matrix:
   - rvm: 1.9.3
     env: PUPPET_GEM_VERSION="~> 4.0.0" STRICT_VARIABLES=yes
   - rvm: 1.9.3
-    env: PUPPET_GEM_VERSION="~> 4.1.0" STRICT_VARIABLES=yes
-  - rvm: 1.9.3
     env: PUPPET_GEM_VERSION="~> 4.2.0" STRICT_VARIABLES=yes
   - rvm: 1.9.3
-    env: PUPPET_GEM_VERSION="~> 4.3.0" STRICT_VARIABLES=yes
-  - rvm: 1.9.3
     env: PUPPET_GEM_VERSION="~> 4.4.0" STRICT_VARIABLES=yes
-  - rvm: 1.9.3
-    env: PUPPET_GEM_VERSION="~> 4.5.0" STRICT_VARIABLES=yes
   - rvm: 1.9.3
     env: PUPPET_GEM_VERSION="~> 4.6.0" STRICT_VARIABLES=yes
   - rvm: 2.1.0
@@ -45,8 +36,6 @@ matrix:
   # eclude all puppet 3.x for ruby 2.3.0
   - rvm: 2.3.0
     env: PUPPET_GEM_VERSION="~> 3.4.0"
-  - rvm: 2.3.0
-    env: PUPPET_GEM_VERSION="~> 3.5.0" STRICT_VARIABLES=yes
   - rvm: 2.3.0
     env: PUPPET_GEM_VERSION="~> 3.6.0" STRICT_VARIABLES=yes
   - rvm: 2.3.0
